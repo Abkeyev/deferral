@@ -855,8 +855,6 @@ const Order = (props: any) => {
     results.forEach((result: any) => {
       const [e, file] = result;
       const res = e.target.result.split(",");
-      console.log(res[1]);
-      console.log(file.size);
       if (file.size > 5000000) {
         setFile1Error(true);
       } else {
@@ -1111,11 +1109,7 @@ const Order = (props: any) => {
                         <BccTypography type="p3" ml="10px">
                           {t("order.agree")}{" "}
                           <BccLink
-                            href={
-                              process.env.PUBLIC_URL + props.lang === "ru"
-                                ? "/agreement.pdf"
-                                : "/agreementKz.pdf"
-                            }
+                            href={`https://bcc.kz/deferral/agreement${props.lang === "kz" ? "Kz" : ""}.pdf`}
                             target="_blank"
                           >
                             {t("order.agree2")}
@@ -1251,7 +1245,6 @@ const Order = (props: any) => {
                             }}
                             onFocus={() => setPeriod(1)}
                             onChange={(e: any) => {
-                              console.log(e.target.value.slice(-1));
                               const s = +e.target.value
                                 .slice(-1)
                                 .replace(/[^0-9]/g, "");
@@ -1390,7 +1383,7 @@ const Order = (props: any) => {
                             size="small"
                             className={classes.btnStyle}
                           >
-                            {file1
+                            {file2
                               ? t("order.fileChoosed")
                               : t("order.fileNotChoosed")}
                           </BccButton>
@@ -1435,7 +1428,7 @@ const Order = (props: any) => {
                             size="small"
                             className={classes.btnStyle}
                           >
-                            {file1
+                            {file3
                               ? t("order.fileChoosed")
                               : t("order.fileNotChoosed")}
                           </BccButton>
@@ -1564,7 +1557,7 @@ const Order = (props: any) => {
                             size="small"
                             className={classes.btnStyle}
                           >
-                            {file1
+                            {file2
                               ? t("order.fileChoosed")
                               : t("order.fileNotChoosed")}
                           </BccButton>
@@ -1609,7 +1602,7 @@ const Order = (props: any) => {
                             size="small"
                             className={classes.btnStyle}
                           >
-                            {file1
+                            {file3
                               ? t("order.fileChoosed")
                               : t("order.fileNotChoosed")}
                           </BccButton>
